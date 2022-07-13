@@ -1,14 +1,33 @@
-function totalDipositAmount(inputFildId, totalAmmountID) {
-    const previousTotalDipositeAmmountText = document.getElementById(totalAmmountID).innerText;
-    const previousTotalDipositeAmmountFloatingNumber = parseFloat(previousTotalDipositeAmmountText);
-    const ammountOfNewdipositinText = document.getElementById(inputFildId).value;
-    const ammountOfNewdipositInFlotingNumber = parseFloat(ammountOfNewdipositinText);
-    document.getElementById(totalAmmountID).innerText = previousTotalDipositeAmmountFloatingNumber + ammountOfNewdipositInFlotingNumber;
+//Update Total ammount after diposite and withdrow
+
+function totalAmmounts(inputFildId, totalAmmountID) {
+    const inputFild = document.getElementById(inputFildId);
+    const inputFildNumber = parseFloat(inputFild.value);
+    const previousTotalAmmountText = document.getElementById(totalAmmountID).innerText;
+    const previousTotalAmmountNumber = parseFloat(previousTotalAmmountText);
+    document.getElementById(totalAmmountID).innerText = previousTotalAmmountNumber + inputFildNumber;
+    inputFild.value = '';
+    return inputFildNumber;
 }
+
+//Update Total Balance after diposite and withdrow
+function totalBalance(inputFildAmmount, ifAdd) {
+    const totalBalanceText = document.getElementById('total-balance').innerText;
+    const totalBalanceAmmount = parseFloat(totalBalanceText);
+    if (ifAdd == true) {
+        document.getElementById('total-balance').innerText = totalBalanceAmmount + inputFildAmmount;
+    } else {
+        document.getElementById('total-balance').innerText = totalBalanceAmmount - inputFildAmmount;
+    }
+
+}
+
 
 // update  diposite total 
 document.getElementById('diposit-button').addEventListener('click', function () {
-    totalDipositAmount('diposit-fild', 'diposite-total-ammount');
+    const dipositeFildAmmount = totalAmmounts('diposit-fild', 'diposite-total-ammount');
+    totalBalance(dipositeFildAmmount, true);
+
     // const previousTotalDipositeAmmountText = document.getElementById('diposite-total-ammount').innerText;
     // const previousTotalDipositeAmmountFloatingNumber = parseFloat(previousTotalDipositeAmmountText);
     // const ammountOfNewdipositinText = dipositeInputFild.value;
@@ -17,13 +36,15 @@ document.getElementById('diposit-button').addEventListener('click', function () 
 
 
     // update  balance total
-    const totalBalanceText = document.getElementById('total-balance').innerText;
-    const totalBalanceAmmount = parseFloat(totalBalanceText);
-    document.getElementById('total-balance').innerText = totalBalanceAmmount + ammountOfNewdipositInFlotingNumber;
+
+    // const totalBalanceText = document.getElementById('total-balance').innerText;
+    // const totalBalanceAmmount = parseFloat(totalBalanceText);
+    // document.getElementById('total-balance').innerText = totalBalanceAmmount + ammountOfNewdipositInFlotingNumber;
+
     // console.log(totalBalanceAmmount + ammountOfNewdipositInFlotingNumber);
 
-    // CLEAR FILD 
-    dipositeInputFild.value = '';
+    // CLEAR FILD
+    // dipositeInputFild.value = '';
 
 })
 
@@ -33,7 +54,9 @@ document.getElementById('diposit-button').addEventListener('click', function () 
 // update  withdeow total 
 
 document.getElementById('withdrow-button').addEventListener('click', function () {
-    totalDipositAmount('withdrow-fild', 'withdrow-total-ammount')
+    const widthrowAmmount = totalAmmounts('withdrow-fild', 'withdrow-total-ammount')
+    totalBalance(widthrowAmmount, false);
+
     // const widthrowInputFild = document.getElementById('withdrow-fild');
     // const widthrowInputFildText = widthrowInputFild.value;
     // const widthrowAmmount = parseFloat(widthrowInputFildText);
@@ -44,11 +67,12 @@ document.getElementById('withdrow-button').addEventListener('click', function ()
     // document.getElementById('withdrow-total-ammount').innerText = widthrowAmmount + previusWithdeowTotalFloatNumber;
 
     // UPDATE BALANCE 
-    const totalBalanceText = document.getElementById('total-balance').innerText;
-    const totalBalanceAmmount = parseFloat(totalBalanceText);
-    document.getElementById('total-balance').innerText = totalBalanceAmmount - widthrowAmmount;
+
+    // const totalBalanceText = document.getElementById('total-balance').innerText;
+    // const totalBalanceAmmount = parseFloat(totalBalanceText);
+    // document.getElementById('total-balance').innerText = totalBalanceAmmount - widthrowAmmount;
 
     // CLEAR FILD 
-    widthrowInputFild.value = '';
+    // widthrowInputFild.value = '';
 
 })
