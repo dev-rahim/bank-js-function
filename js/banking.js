@@ -1,11 +1,21 @@
-// update  diposite total 
-const dipositeInputFild = document.getElementById('diposit-fild');
-document.getElementById('diposit-button').addEventListener('click', function () {
-    const previousTotalDipositeAmmountText = document.getElementById('diposite-total-ammount').innerText;
+function totalDipositAmount(inputFildId, totalAmmountID) {
+    const previousTotalDipositeAmmountText = document.getElementById(totalAmmountID).innerText;
     const previousTotalDipositeAmmountFloatingNumber = parseFloat(previousTotalDipositeAmmountText);
-    const ammountOfNewdipositinText = dipositeInputFild.value;
+    const ammountOfNewdipositinText = document.getElementById(inputFildId).value;
     const ammountOfNewdipositInFlotingNumber = parseFloat(ammountOfNewdipositinText);
-    document.getElementById('diposite-total-ammount').innerText = previousTotalDipositeAmmountFloatingNumber + ammountOfNewdipositInFlotingNumber;
+    document.getElementById(totalAmmountID).innerText = previousTotalDipositeAmmountFloatingNumber + ammountOfNewdipositInFlotingNumber;
+}
+
+// update  diposite total 
+document.getElementById('diposit-button').addEventListener('click', function () {
+    totalDipositAmount('diposit-fild', 'diposite-total-ammount');
+    // const previousTotalDipositeAmmountText = document.getElementById('diposite-total-ammount').innerText;
+    // const previousTotalDipositeAmmountFloatingNumber = parseFloat(previousTotalDipositeAmmountText);
+    // const ammountOfNewdipositinText = dipositeInputFild.value;
+    // const ammountOfNewdipositInFlotingNumber = parseFloat(ammountOfNewdipositinText);
+    // document.getElementById('diposite-total-ammount').innerText = previousTotalDipositeAmmountFloatingNumber + ammountOfNewdipositInFlotingNumber;
+
+
     // update  balance total
     const totalBalanceText = document.getElementById('total-balance').innerText;
     const totalBalanceAmmount = parseFloat(totalBalanceText);
@@ -23,14 +33,15 @@ document.getElementById('diposit-button').addEventListener('click', function () 
 // update  withdeow total 
 
 document.getElementById('withdrow-button').addEventListener('click', function () {
-    const widthrowInputFild = document.getElementById('withdrow-fild');
-    const widthrowInputFildText = widthrowInputFild.value;
-    const widthrowAmmount = parseFloat(widthrowInputFildText);
+    totalDipositAmount('withdrow-fild', 'withdrow-total-ammount')
+    // const widthrowInputFild = document.getElementById('withdrow-fild');
+    // const widthrowInputFildText = widthrowInputFild.value;
+    // const widthrowAmmount = parseFloat(widthrowInputFildText);
 
-    const previusWithdeowTotalText = document.getElementById('withdrow-total-ammount').innerText;
-    const previusWithdeowTotalFloatNumber = parseFloat(previusWithdeowTotalText);
+    // const previusWithdeowTotalText = document.getElementById('withdrow-total-ammount').innerText;
+    // const previusWithdeowTotalFloatNumber = parseFloat(previusWithdeowTotalText);
 
-    document.getElementById('withdrow-total-ammount').innerText = widthrowAmmount + previusWithdeowTotalFloatNumber;
+    // document.getElementById('withdrow-total-ammount').innerText = widthrowAmmount + previusWithdeowTotalFloatNumber;
 
     // UPDATE BALANCE 
     const totalBalanceText = document.getElementById('total-balance').innerText;
